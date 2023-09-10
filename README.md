@@ -22,7 +22,7 @@ Com o Spring Boot conseguimos abstrair e facilitar a configuração de, por exem
 + E muito mais!!
 
 <div style="text-align: center">
-    <img src="images/springboot-build.webp" />
+    <img src="images/springboot-build.webp" width="50%" />
 </div>
 
 ## Características
@@ -37,10 +37,8 @@ Dado que a maior parte das configurações necessárias para o início de um pro
 por que não iniciar um projeto com todas estas configurações já definidas?
 
 <div style="text-align: center">
-    <p><img src="images/spring-versus-springboot.gif" /></p>
-    <footer>
-        <a href="https://glysns.gitbook.io/spring-framework/core">Spring versus Spring Boot</a>
-    </footer>
+    <p><img src="images/spring-versus-springboot.gif" width="50%" /></p>
+    <a href="https://glysns.gitbook.io/spring-framework/core">Spring versus Spring Boot</a>
 </div>
 
 ## Spring Boot Starters
@@ -65,7 +63,7 @@ Isso significa que quando o aplicativo é agrupado e empacotado para implantaç�
 declarada com os escopos de teste será ignorada. As dependências do escopo de teste
 estão disponíveis apenas durante a execução nos modos de desenvolvimento e de teste do Maven.
 
-## Benefícios do uso do Starter
+### Benefícios do uso do Starter
 + Coesão
 + Versões compatíveis
 + Otmização do tempo
@@ -83,3 +81,34 @@ estão disponíveis apenas durante a execução nos modos de desenvolvimento e d
 + openfeign: Client HTTP baseado em interfaces
 + actuator: Gerenciamento de monitoramento da aplicação.
 
+## Beans versus Components
+**@Bean:** é usada para indicar que um método de uma classe de configuração retorna um objeto
+que deve ser gerenciado pelo contêiner Spring. O objeto retornado por esse método pode ser qualquer
+objeto Java que o desenvolvedor deseja que o Spring gerencie. Por exemplo, um objeto de conexão de banco de dados,
+um serviço REST ou um cliente HTTP. Quando o método com a anotação @Bean é chamado, o Spring cria
+um objeto do tipo especificado e o adiciona ao contexto do aplicativo. Esse objeto pode ser posteriormente
+injetado em outras classes que precisam dele através de seus construtores ou usando a anotação @Autowired.<br/>
+**Exemplo:**
+```java
+    @Bean
+    public Gson gson() {
+        return new Gson();
+    }
+```
+**@Component:** Tudo no Spring são componentes, logo quando iniciamos a aplicação será criado um objeto baseado
+na classe StartApplication.java. Anotação a nível de classe para indicar que essa classe deverá ser exposta como
+um bean e ela poderá ser injetada nos consumidores que vão precisar dela.<br/>
+**Exemplo**
+~~~java
+@Component
+public class ConversorJson {
+    @Autowired
+    private Gson gson;
+    public ViaCepResponse converter(String json) {
+        ViaCepResponse response = gson.fromJson(json,ViaCepResponse.class);
+        return response;
+    }
+}
+~~~
+
+## Scopes Singleton Prototype
