@@ -5,7 +5,7 @@ O Spring Framework baseia-se no padrão de injeção de dependências enquanto q
 ## Technical skills
 
 <div style="text-align: center">
-    <img src="./images/java.png" width="10%" />
+    <img src="./images/java.png" width="12%" />
     <img src="./images/springboot.png" width="10%" />
     <img src="./images/maven-logo.png" width="20%" />
     <img src="./images/rest.png" width="20%" />
@@ -146,7 +146,7 @@ public class Beans {
 }
 ~~~
 
-#### The singleton scope
+#### The singleton @Scope
 Scopes a single bean definition to a single object instance per Spring IoC container.<br/>
 When a bean is a singleton, only one shared instance of the bean will be managed, and all requests
 for beans with an id or ids matching that bean definition will result in that one specific bean
@@ -156,7 +156,7 @@ Spring IoC container will create exactly one instance of the object defined by t
 This single instance will be stored in a cache of such singleton beans, and all subsequent requests
 and references for that named bean will result in the cached object being returned.
 
-## Properties Value
+## Properties @Value
 A anotação Spring @Value é usada para atribuir valores padrão a variáveis e argumentos de método.
 Podemos ler variáveis de ambiente Spring, bem como variáveis de sistema usando a anotação @Value.
 A anotação Spring @Value também suporta SpEL.<br/>
@@ -171,4 +171,25 @@ Podemos atribuir um valor padrão que será atribuído se a chave estiver faltan
     private String nome;
 ~~~
 
-## Configuration Properties
+## @ConfigurationProperties
+@ConfigurationProperties permite mapear facilmente todos os arquivos Properties e Yaml em um objeto.
+Também permite validar propriedades com validação de bean JSR-303. Por padrão, a anotação é lida no arquivo application.properties
+O arquivo de origem pode ser alterado com @PropertySourceanotação.
+~~~java
+@Configuration
+@ConfigurationProperties(prefix = "remetente")
+public class Remetente {
+    private String nome;
+    private String email;
+    private List<Long> telefones;
+    // código omitido
+}
+~~~
+No arquivo application.properties temos três propriedades customizadas. Eles têm o prefixo "remetente".
+~~~
+remetente.nome=SeSo Tech
+remetente.email=seso@seso.com
+remetente.telefones=19971395429,19999457709
+~~~
+
+## ORM e JPA
