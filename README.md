@@ -5,10 +5,10 @@ O Spring Framework baseia-se no padrão de injeção de dependências enquanto q
 ## Technical skills
 
 <div style="text-align: center">
-    <img src="./images/java.png" width="20%" />
-    <img src="./images/springboot.png" width="20%" />
-    <img src="./images/maven-logo.png" width="40%" />
-    <img src="./images/rest.png" width="20%" />
+    <img src="./images/java.png" width="10%" />
+    <img src="./images/springboot.png" width="10%" />
+    <img src="./images/maven-logo.png" width="20%" />
+    <img src="./images/rest.png" width="10%" />
 </div>
 
 ## O que é Spring Boot?
@@ -37,7 +37,7 @@ Dado que a maior parte das configurações necessárias para o início de um pro
 por que não iniciar um projeto com todas estas configurações já definidas?
 
 <div style="text-align: center">
-    <img src="images/spring-versus-springboot.gif" />
+    <p><img src="images/spring-versus-springboot.gif" /></p>
     <footer>
         <a href="https://glysns.gitbook.io/spring-framework/core">Spring versus Spring Boot</a>
     </footer>
